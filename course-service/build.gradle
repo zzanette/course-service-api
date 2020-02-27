@@ -42,6 +42,8 @@ dependencies {
 	implementation "org.flywaydb:flyway-core:${flywayVersion}"
 	implementation "com.auth0:java-jwt:${javaJWTVersion}"
 	implementation "com.google.code.gson:gson:${gsonVersion}"
+	implementation "io.springfox:springfox-swagger2:${swaggerVersion}"
+	implementation "io.springfox:springfox-swagger-ui:${swaggerVersion}"
 	
 	compileOnly "org.mapstruct:mapstruct-jdk8:${mapstructVersion}", "org.projectlombok:lombok:${lombokVersion}"
 	annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}", "org.projectlombok:lombok:${lombokVersion}"

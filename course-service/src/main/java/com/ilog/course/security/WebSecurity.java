@@ -1,5 +1,6 @@
 package com.ilog.course.security;
 
+import static com.ilog.course.security.SecurityConstants.DEFAULT_PUBLIC_ACCESS;
 import static com.ilog.course.security.SecurityConstants.PUBLIC_COURSE_AUTHOR_URL;
 import static com.ilog.course.security.SecurityConstants.PUBLIC_COURSE_CONTENT_URL;
 import static com.ilog.course.security.SecurityConstants.PUBLIC_COURSE_URL;
@@ -44,6 +45,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
           .antMatchers(HttpMethod.GET, PUBLIC_COURSE_URL).permitAll()
           .antMatchers(HttpMethod.GET, PUBLIC_COURSE_AUTHOR_URL).permitAll()
           .antMatchers(HttpMethod.GET, PUBLIC_COURSE_CONTENT_URL).permitAll()
+          .antMatchers(DEFAULT_PUBLIC_ACCESS).permitAll()
           .anyRequest().authenticated()
         .and()
           .addFilter(new JWTAuthenticationFilter(authenticationManager(), userService))

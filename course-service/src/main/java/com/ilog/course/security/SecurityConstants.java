@@ -1,6 +1,7 @@
 package com.ilog.course.security;
 
 class SecurityConstants {
+
   static final String SECRET = "SecretKeyToGenJWTs";
   static final long EXPIRATION_TIME = 3600000; // 1 hour
   static final String TOKEN_PREFIX = "Bearer ";
@@ -9,4 +10,7 @@ class SecurityConstants {
   static final String PUBLIC_COURSE_URL = "/v1/courses";
   static final String PUBLIC_COURSE_AUTHOR_URL = "/v1/courses/{courseId}/authors";
   static final String PUBLIC_COURSE_CONTENT_URL = "/v1/courses/{courseId}/content";
+  static final String[] DEFAULT_PUBLIC_ACCESS = new String[]{"/ping", "/v2/api-docs",
+      "/configuration/ui", "/swagger-resources/**", "/configuration/security", "/swagger-ui.html",
+      "/webjars/**", "/swagger/**", "/metrics/**", "/logout", "/login"};
 }
