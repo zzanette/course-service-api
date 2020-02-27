@@ -1,0 +1,41 @@
+# Docker Compose file Reference (https://docs.docker.com/compose/compose-file/)
+version: '3.7'
+
+# Define services
+services:
+  # App ilog course service
+  app-server:
+    build:
+      context: course-service
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    restart: always
+    depends_on: 
+      - maria-db
+    environment:
+      DATASOURCE_URL: jdbc:mariadb://maria-db:3306/coursedb
+      DATASOURCE_USERNAME: root
+      DATASOURCE_PASSWORD: root     
+    networks:
+      - backend
+
+  # Database service
+  maria-db:
+    image: mariadb:latest
+    ports:
+      - "3306:3306"
+    restart: always
+    environment:
+      MYSQL_DATABASE: coursedb
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - backend  
+  
+volumes:
+  db-data:
+
+networks:
+  backend:    
